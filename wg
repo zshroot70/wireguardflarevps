@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Configuração inicial
+echo "Configurando limites de arquivos e ajustes adicionais..."
+sudo apt install wireguard resolvconf curl -y
+
+# Solicitar informações ao usuário
+read -p "Digite o IP público do servidor (IP_PUBLICO): " IP_PUBLICO
+read -p "Digite a PrivateKey para o WireGuard: " PRIVATE_KEY
+read -p "Digite a PublicKey do Peer: " PUBLIC_KEY
+
+# Criar diretório do WireGuard, se não existir
+if [ ! -d "/etc/wireguard" ]; then
+  sudo mkdir -p /etc/wireguard
+fi
+
+# Gerar o arquivo de configuração
+cat << EOF | sudo tee /etc/wireguard/wg0.conf
+[Interface]
+PrivateKey = $PRIVATE_KEY
+Address = 172.16.0.2/32
+DNS = 1.1.1.1, 1.0.0.1
+MTU = 1280
+PostUp = ip rule add from $IP_PUBLICO lookup main
+PostDown = ip rule delete from $IP_PUBLICO lookup main
+
+[Peer]
+PublicKey = $PUBLIC_KEY
+AllowedIPs = 0.0.0.0/0, ::/0
+Endpoint = engage.cloudflareclient.com:2408
+EOF
+
+# Ajustar permissões
+sudo chmod 600 /etc/wireguard/wg0.conf
+
+# Ativar o WireGuard
+sudo wg-quick up wg0
+sudo wg
+
+# Habilitar no boot
+sudo systemctl enable wg-quick@wg0
+
+echo "Configuração do WireGuard concluída!"
