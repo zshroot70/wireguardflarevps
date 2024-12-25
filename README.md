@@ -14,5 +14,3 @@ bash <(curl -sL https://github.com/zshroot70/wireguardflarevps/raw/refs/heads/ma
 ```
 
 **Não me resposabilizo por vps que não instala corretamente**
-
-**testado no debian 11**
