@@ -9,7 +9,9 @@
 
 # Comando de instação
 
+```bash
 bash <(curl -sL https://github.com/zshroot70/wireguardflarevps/raw/refs/heads/main/wg)
 
 **Não me resposabilizo por vps que não instala corretamente**
+
 **testado no debian 11**
