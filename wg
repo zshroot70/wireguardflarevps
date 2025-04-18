@@ -26,8 +26,8 @@ PostDown = ip rule delete from $IP_PUBLICO lookup main
 
 [Peer]
 PublicKey = $PUBLIC_KEY
-AllowedIPs = 0.0.0.0/0, ::/0
-Endpoint = engage.cloudflareclient.com:2408
+AllowedIPs = 0.0.0.0/0
+Endpoint = 162.159.192.1:2408
 EOF
 
 # Ajustar permissões
