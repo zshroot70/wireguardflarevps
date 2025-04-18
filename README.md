@@ -14,6 +14,7 @@ bash <(curl -sL https://github.com/zshroot70/wireguardflarevps/raw/refs/heads/ma
 ```
 
 **Não me resposabilizo por vps que não instala corretamente**
+#
 
 # Updates
 - Suporte a IPv6 removido
