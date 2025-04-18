@@ -14,3 +14,7 @@ bash <(curl -sL https://github.com/zshroot70/wireguardflarevps/raw/refs/heads/ma
 ```
 
 **Não me resposabilizo por vps que não instala corretamente**
+
+# Updates
+- Removido suporte a IPV6
+- Agora usa o ip do engage.cloudflareclient.com pra evitar problemas em vps como qnax e akamai (Caso quiser editar: nano /etc/wireguard/wg0.conf e coloque o dominio ao invés do ip)
